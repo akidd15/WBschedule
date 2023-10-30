@@ -2,14 +2,14 @@
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
 
-const dayjs = require('dayjs');
+
 
 //var currentHour = moment().hour();
 var hours = [9,10,11,12,13,14,15,16,17]
 var timeBlockEL = document.querySelector('.container');
-var saveButton = document.querySelector('#saveBtn');
+var saveButton = $('.saveBtn');
 
-var timeDisplay = document.querySelector('#timeDisplay');
+var timeDisplayEl = $('#timeDisplay');
 
 saveButton.on('click', function () {
   var text = $(this).siblings('.description').val();
@@ -44,25 +44,27 @@ currentHour();
 
 function displayDate() {
   var now = dayjs().format('MMMM DD, YYYY')
- timeDisplay.text(now);
+ timeDisplayEl.text(now);
 };
 displayDate();
 
-$('#hour8 .description').val(localStorage.getItem('hour8'));
-$('#hour9 .description').val(localStorage.getItem('hour9'));
-$('#hour10 .description').val(localStorage.getItem('hour10'));
-$('#hour11 .description').val(localStorage.getItem('hour11'));
-$('#hour12 .description').val(localStorage.getItem('hour12'));
-$('#hour13 .description').val(localStorage.getItem('hour13'));
-$('#hour14 .description').val(localStorage.getItem('hour14'));
-$('#hour15 .description').val(localStorage.getItem('hour15'));
-$('#hour16 .description').val(localStorage.getItem('hour16'));
-$('#hour17 .description').val(localStorage.getItem('hour17'));
+$('#8 .description').val(localStorage.getItem('hour8'));
+$('#9 .description').val(localStorage.getItem('hour9'));
+$('#10 .description').val(localStorage.getItem('hour10'));
+$('#11 .description').val(localStorage.getItem('hour11'));
+$('#12 .description').val(localStorage.getItem('hour12'));
+$('#13 .description').val(localStorage.getItem('hour13'));
+$('#14 .description').val(localStorage.getItem('hour14'));
+$('#15 .description').val(localStorage.getItem('hour15'));
+$('#16 .description').val(localStorage.getItem('hour16'));
+$('#17 .description').val(localStorage.getItem('hour17'));
 
-
-
-
-
+function refresh() {
+for (i = 9; i < 18; i++) {
+  $('#' + [i] + ' .description').val(localStorage.getItem([i]));
+}
+};
+refresh();
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
