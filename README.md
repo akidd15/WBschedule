@@ -1,5 +1,4 @@
-# WBschedule
-![Github license](https://img.shields.io/badge/license-${license}-blue.svg)
+# Work Day Scheduler
 
 ## Table of Contents
  * [Description](#description)
