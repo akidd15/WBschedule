@@ -1,10 +1,10 @@
 // Wrap all code that interacts with the DOM in a call to jQuery to ensure that
 // the code isn't run until the browser has finished rendering all the elements
 // in the html.
-var today = moment();
+var currentHour = moment().hour();
 
 var timeBlockEL = document.querySelector('.container');
-
+var saveButton = document.querySelector('.saveBtn');
 
 $('#currentDay').text(today.format('LLLL'));
 
@@ -15,22 +15,21 @@ $('saveBtn').on('click', function () {
   localStorage.setItem(time, text);
 });
 
-
-// $('#hour8 .description').val(localStorage.getItem('hour8'));
-// $('#hour9 .description').val(localStorage.getItem('hour9'));
-// $('#hour10 .description').val(localStorage.getItem('hour10'));
-// $('#hour11 .description').val(localStorage.getItem('hour11'));
-// $('#hour12 .description').val(localStorage.getItem('hour12'));
-// $('#hour13 .description').val(localStorage.getItem('hour13'));
-// $('#hour14 .description').val(localStorage.getItem('hour14'));
-// $('#hour15 .description').val(localStorage.getItem('hour15'));
-// $('#hour16 .description').val(localStorage.getItem('hour16'));
-// $('#hour17 .description').val(localStorage.getItem('hour17'));
+$('#hour8 .description').val(localStorage.getItem('hour8'));
+$('#hour9 .description').val(localStorage.getItem('hour9'));
+$('#hour10 .description').val(localStorage.getItem('hour10'));
+$('#hour11 .description').val(localStorage.getItem('hour11'));
+$('#hour12 .description').val(localStorage.getItem('hour12'));
+$('#hour13 .description').val(localStorage.getItem('hour13'));
+$('#hour14 .description').val(localStorage.getItem('hour14'));
+$('#hour15 .description').val(localStorage.getItem('hour15'));
+$('#hour16 .description').val(localStorage.getItem('hour16'));
+$('#hour17 .description').val(localStorage.getItem('hour17'));
 
 $(function tasks() {
 
-  var currentHour = today.hours();
-  $('time-block').each(function () {
+  //var currentHour = today.hours();
+  $('#current-day').each(function () {
     var timeId = parseInt($(this).attr('id').split('hour')[1]);
 
     if (timeId < currentHour) {
@@ -48,7 +47,7 @@ $(function tasks() {
     }
   });
 
-  tasks();
+ 
   // TODO: Add a listener for click events on the save button. This code should
   // use the id in the containing time-block as a key to save the user input in
   // local storage. HINT: What does `this` reference in the click listener
@@ -68,3 +67,8 @@ $(function tasks() {
   //
   // TODO: Add code to display the current date in the header of the page.
 });
+tasks();
+// setTimeout(function () {
+//   location = '';
+// },
+// 1000 * 60);
